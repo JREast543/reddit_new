@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimatedList } from 'react-animated-list';
+//import { AnimatedList } from 'react-animated-list';
 import Post from '../Post/Post';
-import PostLoading from '../Post/PostLoading';
-import getRandomNumber from '../../utils/getRandomNumber';
+//import PostLoading from '../Post/PostLoading';
+//import getRandomNumber from '../../utils/getRandomNumber';
 import {
   fetchPosts,
   selectFilteredPosts,
@@ -14,7 +14,7 @@ import './Home.css';
 
 const Home = () => {
   const reddit = useSelector((state) => state.reddit);
-  const { isLoading, error, searchTerm, selectedSubreddit } = reddit;
+  const { /*isLoading,*/ error, searchTerm, selectedSubreddit } = reddit;
   const posts = useSelector(selectFilteredPosts);
   const dispatch = useDispatch();
 
@@ -30,13 +30,13 @@ const Home = () => {
     return getComments;
   };
 
-  if (isLoading) {
-    return (
-      <AnimatedList animation="zoom">
-        {Array(getRandomNumber(3, 10)).fill(<PostLoading />)}
-      </AnimatedList>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <AnimatedList animation="zoom">
+  //       {Array(getRandomNumber(3, 10)).fill(<PostLoading />)}
+  //     </AnimatedList>
+  //   );
+  // }
 
   if (error) {
     return (
