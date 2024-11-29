@@ -18,9 +18,15 @@ const Home = () => {
   const posts = useSelector(selectFilteredPosts);
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(fetchPosts(selectedSubreddit));
+  // }, [selectedSubreddit]);
+
   useEffect(() => {
-    dispatch(fetchPosts(selectedSubreddit));
-  }, [selectedSubreddit]);
+    const fetchData = async () => { 
+      try { 
+        await dispatch(fetchPosts(selectedSubreddit)); 
+      } catch (error) { console.error('Failed to fetch posts:', error); } }; fetchData(); }, [dispatch, selectedSubreddit]);
 
   const onToggleComments = (index) => {
     const getComments = (permalink) => {
